@@ -1,0 +1,42 @@
+{% extends "base.html" %}
+
+{% block title %}Composite &dash; {{ super }}{% endblock title %}
+
+{% block content %}
+    {% if messages %}
+        <ul>
+            {% for message in messages %}
+                <li>{{ message }}</li>
+            {% endfor %}
+        </ul>
+    {% endif %}
+
+
+    <h1>New User</h1>
+    <form method="post" action=".">
+        {% csrf_token %}
+        <fieldset>
+            <legend>Create a user below...</legend>
+            {{ user_create.form.as_p }}
+            <input type="hidden" value="user_create" name="view_name" />
+            <button type="submit" class="btn">Submit</button>
+        </fieldset>
+    </form>
+
+
+    <ul>
+        {% for user in user_list.users %}
+            <li>
+                <a href="/user/detail/{{ user.pk }}/">
+                    {{ user }}
+                </a>
+            </li>
+        {% endfor %}
+    </ul>
+
+
+
+
+
+
+{% endblock content %}

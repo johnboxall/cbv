@@ -1,0 +1,26 @@
+{% extends "base.html" %}
+
+{% block title %}Edit User &dash; {{ form.instance }} &dash; {{ block.super }}{% endblock title %}
+
+{% block content %}
+
+    {% if messages %}
+        <ul>
+            {% for message in messages %}
+                <li>{{ message }}</li>
+            {% endfor %}
+        </ul>
+    {% endif %}
+
+
+
+    <h1>Edit User &dash; {{ form.instance }}</h1>
+    <form method="post" action=".">
+        {% csrf_token %}
+        <fieldset>
+            <legend>Edit the user below...</legend>
+            {{ form.as_p }}
+            <button type="submit" class="btn">Submit</button>
+        </fieldset>
+    </form>
+{% endblock content %}

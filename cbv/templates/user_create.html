@@ -1,0 +1,23 @@
+{% extends "base.html" %}
+
+{% block title %}New User &dash; {{ super }}{% endblock title %}
+
+{% block content %}
+    {% if messages %}
+        <ul>
+            {% for message in messages %}
+                <li>{{ message }}</li>
+            {% endfor %}
+        </ul>
+    {% endif %}
+
+    <h1>New User</h1>
+    <form method="post" action=".">
+        {% csrf_token %}
+        <fieldset>
+            <legend>Create a user below...</legend>
+            {{ form.as_p }}
+            <button type="submit" class="btn">Submit</button>
+        </fieldset>
+    </form>
+{% endblock content %}

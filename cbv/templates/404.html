@@ -1,0 +1,9 @@
+{% extends "base.html" %}
+
+{% block title %}404 &dash; {{ block.super }}{% endblock title %}
+
+{% block content %}
+    <h1>Page Not Found!</h1>
+    <p><a href="{% url home %}">Go home!</a></p>
+
+{% endblock content %}
